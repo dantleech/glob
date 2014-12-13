@@ -1,39 +1,18 @@
-# Symfony CMF Resource Component
+# Glob finder
 
-[![Build Status](https://secure.travis-ci.org/symfony-cmf/Resource.png)](http://travis-ci.org/symfony-cmf/Resource)
-[![Latest Stable Version](https://poser.pugx.org/symfony-cmf/resource/version.png)](https://packagist.org/packages/symfony-cmf/resource)
-[![Total Downloads](https://poser.pugx.org/symfony-cmf/resource/d/total.png)](https://packagist.org/packages/symfony-cmf/resource)
+[![Build Status](https://secure.travis-ci.org/doctrine/Glob.png)](http://travis-ci.org/doctrine/Glob)
+[![Latest Stable Version](https://poser.pugx.org/doctrine/glob/version.png)](https://packagist.org/packages/doctrine/glob)
+[![Total Downloads](https://poser.pugx.org/doctrine/glob/d/total.png)](https://packagist.org/packages/doctrine/glob)
 
-This component is part of the [Symfony Content Management Framework (CMF)](http://cmf.symfony.com/)
-and licensed under the [MIT License](LICENSE).
+This library provides a way of querying for objects from hierachical data
+stores.
 
-The Resource component provides PHPCR/ODM integration with Puli.
+Currently support is only provided for [PHPCR](https://phpcr.github.io) and
+[PHPCR-ODM](http://docs.doctrine-project.org/projects/doctrine-phpcr-odm/en/latest/)
 
-## Requirements 
+````php
+$documentManager = // get doctrine phpcr-odm document manager
 
-* See also the `require` section of [composer.json](composer.json)
-
-## Documentation
-
-Please refer to the ResourceBundle documentation:
-
-* [ResourceBundle documentation](http://symfony.com/doc/master/cmf/bundles/resource/index.html)
-
-See also:
-
-* [All Symfony CMF documentation](http://symfony.com/doc/master/cmf/index.html) - complete Symfony CMF reference
-* [Symfony CMF Website](http://cmf.symfony.com/) - introduction, live demo, support and community links
-
-## Contributing
-
-Pull requests are welcome. Please see our
-[CONTRIBUTING](https://github.com/symfony-cmf/symfony-cmf/blob/master/CONTRIBUTING.md)
-guide.
-
-Unit and/or functional tests exist for this component. See the
-[Testing documentation](http://symfony.com/doc/master/cmf/components/testing.html)
-for a guide to running the tests.
-
-Thanks to
-[everyone who has contributed](https://github.com/symfony-cmf/Resource/contributors) already.
-
+$finder = new PhpcrOdmTraversalFinder($documentManager);
+$finder->find('/cmf/articles/*');
+````
