@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://www.phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit
+    colors="true"
+    bootstrap="vendor/autoload.php"
+    >
+
+    <testsuites>
+        <testsuite name="Glob Suite">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory>.</directory>
+            <exclude>
+                <file>*Bundle.php</file>
+                <directory>Resources/</directory>
+                <directory>Admin/</directory>
+                <directory>Tests/</directory>
+                <directory>vendor/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <php>
+        <server name="KERNEL_DIR" value="Tests/Resources/app" />
+    </php>
+
+</phpunit>
