@@ -55,12 +55,10 @@ class PhpcrTraversalFinder extends AbstractTraversalFinder
         $absPath = '/' . implode('/', $pathSegments);
 
         try {
-            $node = $this->session->getNode($absPath);
+            return $this->session->getNode($absPath);
         } catch (\PHPCR\PathNotFoundException $e) {
-            $node = null;
+            return null;
         }
-
-        return $node;
     }
 
     /**

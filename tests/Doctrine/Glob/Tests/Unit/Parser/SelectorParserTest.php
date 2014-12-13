@@ -69,18 +69,24 @@ class SelectorParserTest extends ProphecyTestCase
                 ),
             ),
             array(
-                '/foo?/bar',
+                '/\*/bar',
                 array(
-                    array('foo?', SelectorParser::T_PATTERN),
+                    array('*', SelectorParser::T_STATIC),
                     array('bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
             array(
-                '/foo?/bar/baz*',
+                '/\\\*/bar',
                 array(
-                    array('foo?', SelectorParser::T_PATTERN),
-                    array('bar', SelectorParser::T_STATIC),
-                    array('baz*', SelectorParser::T_PATTERN | SelectorParser::T_LAST),
+                    array('\*', SelectorParser::T_PATTERN),
+                    array('bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+            array(
+                '/\\\\\*/bar',
+                array(
+                    array('\\*', SelectorParser::T_STATIC),
+                    array('bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
         );

@@ -56,9 +56,7 @@ class PhpcrOdmTraversalFinder extends AbstractTraversalFinder
     protected function getNode(array $pathSegments)
     {
         $absPath = '/' . implode('/', $pathSegments);
-        $document = $this->getManager()->find(null, $absPath);
-
-        return $document;
+        return $this->getManager()->find(null, $absPath);
     }
 
     /**

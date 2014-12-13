@@ -56,7 +56,7 @@ class SelectorParser
         $elements = explode('/', $selector);
 
         foreach ($elements as $index => $element) {
-            if ($this->containsGlob($element)) {
+            if ($this->containsWildcard($element)) {
                 $flags = self::T_PATTERN;
             } else {
                 $flags = self::T_STATIC;
@@ -66,18 +66,32 @@ class SelectorParser
                 $flags = $flags | self::T_LAST;
             }
 
-            $segments[] = array($element, $flags);
+            $segments[] = array(stripslashes($element), $flags);
         }
 
         return $segments;
     }
 
-    private function containsGlob($string)
+    /**
+     * Check to see if the string contains an unescaped wildcard
+     *
+     * @param string
+     *
+     * @return boolean
+     */
+    private function containsWildcard($string)
     {
-        if (false === strpos($string, '*')) {
+        if (false === $strpos = strpos($string, '*')) {
             return false;
         }
 
-        return true;
+        $escapeChars = 0;
+        while (isset($string[--$strpos]) && $string[$strpos] === '\\') {
+            $escapeChars++;
+        }
+
+        $isNotEscaped = $escapeChars % 2 === 0;
+
+        return $isNotEscaped;
     }
 }

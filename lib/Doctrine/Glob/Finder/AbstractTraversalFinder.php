@@ -60,7 +60,7 @@ abstract class AbstractTraversalFinder implements FinderInterface
         $segments = $this->parser->parse($selector);
 
         $result = array();
-        $this->traverse(null, $segments, $result);
+        $this->traverse($segments, $result);
 
         return $result;
     }
@@ -74,7 +74,7 @@ abstract class AbstractTraversalFinder implements FinderInterface
      *
      * @return null
      */
-    private function traverse($node = null, $segments, &$result = array())
+    private function traverse(array $segments, &$result = array(), $node = null)
     {
         $path = array();
 
@@ -107,13 +107,13 @@ abstract class AbstractTraversalFinder implements FinderInterface
                     if ($bitmask & SelectorParser::T_LAST) {
                         $result[] = $child;
                     } else {
-                        $this->traverse($child, $segments, $result);
+                        $this->traverse($segments, $result, $child);
                     }
                 }
 
                 return;
             }
-        } while (count($segments));
+        } while ($segments);
     }
 
     /**
