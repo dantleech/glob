@@ -56,7 +56,7 @@ class SelectorParser
         $elements = explode('/', $selector);
 
         foreach ($elements as $index => $element) {
-            if ($this->containsWildcard($element)) {
+            if ($this->processWildcard($element)) {
                 $flags = self::T_PATTERN;
             } else {
                 $flags = self::T_STATIC;
@@ -73,13 +73,16 @@ class SelectorParser
     }
 
     /**
-     * Check to see if the string contains an unescaped wildcard
+     * Check to see if the given (by reference) string contains
+     * a wildcard.
+     *
+     * If the wildcard is escaped then remove the escape character.
      *
      * @param string
      *
      * @return boolean
      */
-    private function containsWildcard(&$string)
+    private function processWildcard(&$string)
     {
         if (false === $strpos = strpos($string, '*')) {
             return false;
