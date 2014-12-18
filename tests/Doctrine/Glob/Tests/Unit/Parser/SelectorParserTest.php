@@ -43,38 +43,7 @@ class SelectorParserTest extends ProphecyTestCase
                     array('\bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
-            array(
-                '/\\\\\*/boo',
-                array(
-                    array('\\\\*', SelectorParser::T_STATIC),
-                    array('boo', SelectorParser::T_STATIC | SelectorParser::T_LAST),
-                ),
-            ),
-            array(
-                '/\\\\\*/boo/\\\\*/booze',
-                array(
-                    array('\\\\*', SelectorParser::T_STATIC),
-                    array('boo', SelectorParser::T_STATIC),
-                    array('\\\\*', SelectorParser::T_PATTERN),
-                    array('booze', SelectorParser::T_STATIC | SelectorParser::T_LAST),
-                ),
-            ),
-            array(
-                '/\\\*/boo',
-                array(
-                    array('\\\\*', SelectorParser::T_PATTERN),
-                    array('boo', SelectorParser::T_STATIC | SelectorParser::T_LAST),
-                ),
-            ),
-            array(
-                '/\\\*/boo/\\\*/boom',
-                array(
-                    array('\\\\*', SelectorParser::T_PATTERN),
-                    array('boo', SelectorParser::T_STATIC),
-                    array('\\\\*', SelectorParser::T_PATTERN),
-                    array('boom', SelectorParser::T_STATIC | SelectorParser::T_LAST),
-                ),
-            ),
+
             array(
                 '/z*',
                 array(
@@ -111,6 +80,46 @@ class SelectorParserTest extends ProphecyTestCase
                 array(
                     array('*', SelectorParser::T_STATIC),
                     array('bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+
+            // literal asterix "\\\*" should be "\\*"
+            array(
+                '/\\\\\*/boo',
+                array(
+                    array('\\\\*', SelectorParser::T_STATIC),
+                    array('boo', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+
+            // one literal asterix and a non-espaped asterix
+            array(
+                '/\\\\\*/boo/\\\\*/booze',
+                array(
+                    array('\\\\*', SelectorParser::T_STATIC),
+                    array('boo', SelectorParser::T_STATIC),
+                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('booze', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+
+            // non-escaped asterix ("\\*")
+            array(
+                '/\\\*/boo',
+                array(
+                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('boo', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+
+            // two non-espaped asterixes
+            array(
+                '/\\\*/boo/\\\*/boom',
+                array(
+                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('boo', SelectorParser::T_STATIC),
+                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('boom', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
         );

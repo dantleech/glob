@@ -14,15 +14,8 @@
 
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory>.</directory>
-            <exclude>
-                <directory>vendor/</directory>
-            </exclude>
+            <directory>src</directory>
         </whitelist>
     </filter>
-
-    <php>
-        <server name="KERNEL_DIR" value="Tests/Resources/app" />
-    </php>
 
 </phpunit>
