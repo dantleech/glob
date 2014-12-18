@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DTL\\Glob\\": "lib/Doctrine/Glob"
+            "DTL\\Glob\\": "lib/DTL/Glob"
         }
     },
     "autoload-dev": {
