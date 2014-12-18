@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Doctrine\Glob;
+namespace DTL\Glob;
 
 use Prophecy\PhpUnit\ProphecyTestCase;
-use Doctrine\Glob\Parser\SelectorParser;
+use DTL\Glob\Parser\SelectorParser;
 
 class SelectorParserTest extends ProphecyTestCase
 {
@@ -38,7 +38,7 @@ class SelectorParserTest extends ProphecyTestCase
             array(
                 '/z*',
                 array(
-                    array('z*', SelectorParser::T_ASTERISK | SelectorParser::T_LAST),
+                    array('z*', SelectorParser::T_PATTERN | SelectorParser::T_LAST),
                 ),
             ),
             array(
@@ -62,7 +62,7 @@ class SelectorParserTest extends ProphecyTestCase
             array(
                 '/*/bar',
                 array(
-                    array('*', SelectorParser::T_ASTERISK),
+                    array('*', SelectorParser::T_PATTERN),
                     array('bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
@@ -89,7 +89,7 @@ class SelectorParserTest extends ProphecyTestCase
                 array(
                     array('\\\\*', SelectorParser::T_STATIC),
                     array('boo', SelectorParser::T_STATIC),
-                    array('\\\\*', SelectorParser::T_ASTERISK),
+                    array('\\\\*', SelectorParser::T_PATTERN),
                     array('booze', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
@@ -98,7 +98,7 @@ class SelectorParserTest extends ProphecyTestCase
             array(
                 '/\\\*/boo',
                 array(
-                    array('\\\\*', SelectorParser::T_ASTERISK),
+                    array('\\\\*', SelectorParser::T_PATTERN),
                     array('boo', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
@@ -107,9 +107,9 @@ class SelectorParserTest extends ProphecyTestCase
             array(
                 '/\\\*/boo/\\\*/boom',
                 array(
-                    array('\\\\*', SelectorParser::T_ASTERISK),
+                    array('\\\\*', SelectorParser::T_PATTERN),
                     array('boo', SelectorParser::T_STATIC),
-                    array('\\\\*', SelectorParser::T_ASTERISK),
+                    array('\\\\*', SelectorParser::T_PATTERN),
                     array('boom', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),

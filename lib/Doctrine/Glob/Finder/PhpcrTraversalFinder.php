@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Doctrine\Glob\Finder;
+namespace DTL\Glob\Finder;
 
 use PHPCR\SessionInterface;
 
