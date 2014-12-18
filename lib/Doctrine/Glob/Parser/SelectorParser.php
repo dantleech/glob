@@ -66,7 +66,7 @@ class SelectorParser
                 $flags = $flags | self::T_LAST;
             }
 
-            $segments[] = array(stripslashes($element), $flags);
+            $segments[] = array($element, $flags);
         }
 
         return $segments;
@@ -79,7 +79,7 @@ class SelectorParser
      *
      * @return boolean
      */
-    private function containsWildcard($string)
+    private function containsWildcard(&$string)
     {
         if (false === $strpos = strpos($string, '*')) {
             return false;
@@ -90,8 +90,14 @@ class SelectorParser
             $escapeChars++;
         }
 
-        $isNotEscaped = $escapeChars % 2 === 0;
 
-        return $isNotEscaped;
+        $isEscaped = $escapeChars % 2 !== 0;
+
+        // remove one of the escaping characters
+        if ($isEscaped) {
+            $string = substr($string, 0, $strpos - 1) . substr($string, $strpos);
+        }
+
+        return !$isEscaped;
     }
 }

@@ -38,6 +38,44 @@ class SelectorParserTest extends ProphecyTestCase
     {
         return array(
             array(
+                '/\bar',
+                array(
+                    array('\bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+            array(
+                '/\\\\\*/boo',
+                array(
+                    array('\\\\*', SelectorParser::T_STATIC),
+                    array('boo', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+            array(
+                '/\\\\\*/boo/\\\\*/booze',
+                array(
+                    array('\\\\*', SelectorParser::T_STATIC),
+                    array('boo', SelectorParser::T_STATIC),
+                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('booze', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+            array(
+                '/\\\*/boo',
+                array(
+                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('boo', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+            array(
+                '/\\\*/boo/\\\*/boom',
+                array(
+                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('boo', SelectorParser::T_STATIC),
+                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('boom', SelectorParser::T_STATIC | SelectorParser::T_LAST),
+                ),
+            ),
+            array(
                 '/z*',
                 array(
                     array('z*', SelectorParser::T_PATTERN | SelectorParser::T_LAST),
@@ -72,20 +110,6 @@ class SelectorParserTest extends ProphecyTestCase
                 '/\*/bar',
                 array(
                     array('*', SelectorParser::T_STATIC),
-                    array('bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
-                ),
-            ),
-            array(
-                '/\\\*/bar',
-                array(
-                    array('\*', SelectorParser::T_PATTERN),
-                    array('bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
-                ),
-            ),
-            array(
-                '/\\\\\*/bar',
-                array(
-                    array('\\*', SelectorParser::T_STATIC),
                     array('bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
