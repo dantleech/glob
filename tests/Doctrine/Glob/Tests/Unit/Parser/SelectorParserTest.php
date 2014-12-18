@@ -1,26 +1,17 @@
 <?php
 /*
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * This file is part of the Glob package.
  *
- * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
- * <http://www.doctrine-project.org>.
+ * (c) Daniel Leech <daniel@dantleech.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
-namespace DTL\Glob;
+namespace Doctrine\Glob;
 
 use Prophecy\PhpUnit\ProphecyTestCase;
-use DTL\Glob\Parser\SelectorParser;
+use Doctrine\Glob\Parser\SelectorParser;
 
 class SelectorParserTest extends ProphecyTestCase
 {
@@ -47,7 +38,7 @@ class SelectorParserTest extends ProphecyTestCase
             array(
                 '/z*',
                 array(
-                    array('z*', SelectorParser::T_PATTERN | SelectorParser::T_LAST),
+                    array('z*', SelectorParser::T_ASTERISK | SelectorParser::T_LAST),
                 ),
             ),
             array(
@@ -71,7 +62,7 @@ class SelectorParserTest extends ProphecyTestCase
             array(
                 '/*/bar',
                 array(
-                    array('*', SelectorParser::T_PATTERN),
+                    array('*', SelectorParser::T_ASTERISK),
                     array('bar', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
@@ -98,7 +89,7 @@ class SelectorParserTest extends ProphecyTestCase
                 array(
                     array('\\\\*', SelectorParser::T_STATIC),
                     array('boo', SelectorParser::T_STATIC),
-                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('\\\\*', SelectorParser::T_ASTERISK),
                     array('booze', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
@@ -107,7 +98,7 @@ class SelectorParserTest extends ProphecyTestCase
             array(
                 '/\\\*/boo',
                 array(
-                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('\\\\*', SelectorParser::T_ASTERISK),
                     array('boo', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
@@ -116,9 +107,9 @@ class SelectorParserTest extends ProphecyTestCase
             array(
                 '/\\\*/boo/\\\*/boom',
                 array(
-                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('\\\\*', SelectorParser::T_ASTERISK),
                     array('boo', SelectorParser::T_STATIC),
-                    array('\\\\*', SelectorParser::T_PATTERN),
+                    array('\\\\*', SelectorParser::T_ASTERISK),
                     array('boom', SelectorParser::T_STATIC | SelectorParser::T_LAST),
                 ),
             ),
