@@ -17,13 +17,13 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace DTL\Glob\Tests\Functional\Finder;
+namespace Doctrine\Glob\Tests\Functional\Finder;
 
 use Jackalope\RepositoryFactoryFilesystem;
 use PHPCR\SimpleCredentials;
-use DTL\Glob\Parser\SelectorParser;
+use Doctrine\Glob\Parser\SelectorParser;
 use Symfony\Component\Filesystem\Filesystem;
-use DTL\Glob\Finder\PhpcrTraversalFinder;
+use Doctrine\Glob\Finder\PhpcrTraversalFinder;
 
 class PhpcrTraversalFinderTest extends \PHPUnit_Framework_TestCase
 {

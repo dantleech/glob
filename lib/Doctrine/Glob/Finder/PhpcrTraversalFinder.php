@@ -17,7 +17,7 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\Glob\Finder;
+namespace DTL\Glob\Finder;
 
 use PHPCR\SessionInterface;
 

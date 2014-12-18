@@ -17,11 +17,11 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace DTL\Glob\Finder;
+namespace Doctrine\Glob\Finder;
 
 use PHPCR\NodeInterface;
-use DTL\Glob\FinderInterface;
-use DTL\Glob\Parser\SelectorParser;
+use Doctrine\Glob\FinderInterface;
+use Doctrine\Glob\Parser\SelectorParser;
 
 /**
  * Abstract finder implementation for traversing hierachical

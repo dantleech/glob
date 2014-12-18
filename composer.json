@@ -1,7 +1,7 @@
 {
-    "name": "doctrine/glob-finder",
+    "name": "dantleech/glob-finder",
     "description": "Library offering object location from hierarchrical persistent storage systems using globs",
-    "homepage": "http://www.doctrine-project.org",
+    "homepage": "http://www.dantleech-project.org",
     "license": "MIT",
     "authors": [
         {
@@ -14,21 +14,21 @@
     },
     "require-dev": {
         "phpspec/prophecy-phpunit": "~1.0.0",
-        "doctrine/phpcr-odm": "~1.2",
+        "dantleech/phpcr-odm": "~1.2",
         "jackalope/jackalope-fs": "dev-master"
     },
     "suggest": {
-        "doctrine/phpcr-odm": "To enable support for the PHPCR ODM documents",
-        "doctrine/phpcr-bundle": "To enable support for the PHPCR ODM documents"
+        "dantleech/phpcr-odm": "To enable support for the PHPCR ODM documents",
+        "dantleech/phpcr-bundle": "To enable support for the PHPCR ODM documents"
     },
     "autoload": {
         "psr-4": {
-            "Doctrine\\Glob\\": "lib/Doctrine/Glob"
+            "DTL\\Glob\\": "lib/Doctrine/Glob"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Doctrine\\Glob\\Tests\\": "tests"
+            "DTL\\Glob\\Tests\\": "tests"
         }
     },
     "extra": {
