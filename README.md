@@ -11,7 +11,7 @@ Currently support is only provided for [PHPCR](https://phpcr.github.io) and
 [PHPCR-ODM](http://docs.dantleech-project.org/projects/dantleech-phpcr-odm/en/latest/)
 
 ````php
-$documentManager = // get dantleech phpcr-odm document manager
+$documentManager = // get phpcr-odm document manager
 
 $finder = new PhpcrOdmTraversalFinder($documentManager);
 $finder->find('/cmf/articles/*');
