@@ -15,6 +15,7 @@
     "require-dev": {
         "phpspec/prophecy-phpunit": "~1.0.0",
         "doctrine/phpcr-odm": "~1.2",
+        "doctrine/phpcr-bundle": "~1.2",
         "jackalope/jackalope-fs": "dev-master"
     },
     "suggest": {

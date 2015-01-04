@@ -10,7 +10,7 @@
 
 namespace DTL\Glob\Finder;
 
-use DTL\Common\Persistence\ManagerRegistry;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
  * PHPCR ODM finder which users traversal.
