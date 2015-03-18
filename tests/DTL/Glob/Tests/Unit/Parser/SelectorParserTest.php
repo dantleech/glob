@@ -8,12 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace DTL\Glob;
+namespace DTL\Glob\Parser;
 
-use Prophecy\PhpUnit\ProphecyTestCase;
 use DTL\Glob\Parser\SelectorParser;
 
-class SelectorParserTest extends ProphecyTestCase
+class SelectorParserTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var SelectorParser

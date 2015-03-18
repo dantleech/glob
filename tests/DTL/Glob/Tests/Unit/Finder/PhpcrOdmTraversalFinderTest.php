@@ -8,13 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace DTL\Glob;
+namespace DTL\Glob\Finder;
 
 use Prophecy\PhpUnit\ProphecyTestCase;
 use DTL\Glob\Parser\SelectorParser;
 use DTL\Glob\Finder\PhpcrOdmTraversalFinder;
 
-class PhpcrOdmTraversalFinderTest extends ProphecyTestCase
+class PhpcrOdmTraversalFinderTest extends \PHPUnit_Framework_TestCase
 {
     private $finder;
     private $manager;
@@ -23,7 +23,6 @@ class PhpcrOdmTraversalFinderTest extends ProphecyTestCase
 
     public function setUp()
     {
-        parent::setUp();
         $this->managerRegistry = $this->prophesize('Doctrine\Bundle\PHPCRBundle\ManagerRegistry');
         $this->manager = $this->prophesize('Doctrine\ODM\PHPCR\DocumentManager');
         $this->finder = new PhpcrOdmTraversalFinder($this->managerRegistry->reveal());
